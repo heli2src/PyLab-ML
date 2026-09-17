@@ -2,5 +2,6 @@
 
 __all__ = [
             "natinst",
-            "keithley"
+            "keithley",
+            "owon"
            ]

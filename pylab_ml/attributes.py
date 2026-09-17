@@ -311,7 +311,7 @@ class create_attributes(object):
                 value = super(__class__, self).__getattribute__("_" + attr)
                 self._attrlogger(30, attr, value)
                 return value
-            error, value = self._call_function("gb", fparam, None)
+            error, value = self._call_function("gb", fparam, attr)
             if error:
                 return
             value = self._call_instance(
@@ -365,7 +365,7 @@ class create_attributes(object):
     def _attrlogger(self, msgnr, *kwargs):
         """
         Log the attribute access and errors.
-        
+
         Parameters
         ----------
             msgnr : int
@@ -396,7 +396,7 @@ class create_attributes(object):
     def _enum_error(self, function_name, val, enum):
         """
         Log an error message for invalid enum values.
-        
+
         Parameters
         ----------
             function_name : str
@@ -507,7 +507,7 @@ class create_attributes(object):
     def _get_functionname(self, dictline, rw):
         """
         Get the function name for read/write.
-        
+
         Parameters
         ----------
             dictline : any
@@ -532,7 +532,7 @@ class create_attributes(object):
     def _call_function(self, typ, fparam, value=None):
         """
         Call the associated function for the attribute if defined in the dictionary.
-        
+
         Parameters
         ----------
             typ : str
@@ -615,11 +615,11 @@ class create_attributes(object):
 
 class Child(create_attributes):
     """ Class for child attributes. This class is used to create child attributes, which are attributes of attributes. """
-    
+
     def __init__(self, root, instName):
         """
         Initialize the Child instance.
-        
+
         Parameters
         ----------
             root : object
